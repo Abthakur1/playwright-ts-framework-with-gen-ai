@@ -1,4 +1,4 @@
-# Playwright TypeScript Test Automation Framework Generation
+# GenAI Playwright Blueprint — scaffold a production‑ready TypeScript test framework.
 
 ## Overview
 As an Automation Test Leader, I’ve designed a production‑ready Playwright TypeScript test automation framework that blends industry best practices with the power of Generative AI.
