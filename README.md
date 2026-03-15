@@ -100,7 +100,8 @@ playwright-ts-framework/
 │   │   ├── logger.ts               # Custom logging utility
 │   │   └── helpers.ts              # Helper utility functions
 │   └── config/
-│       └── testConfig.ts           # Test configuration management
+│       ├── testConfig.ts           # Test configuration management
+│       └── testData.ts             # Test data definitions
 ├── .env.example                    # Environment variables template
 ├── .env                            # Environment variables (gitignored)
 ├── .gitignore                      # Git ignore rules
