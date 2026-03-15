@@ -1,7 +1,10 @@
 # Playwright TypeScript Test Automation Framework Generation
 
 ## Overview
-This prompt guides you through creating a professional, production-ready Playwright TypeScript test automation framework following industry best practices. This framework is designed to teach GenAI usage in QA and automate testing for the SauceDemo web application.
+As an Automation Test Leader, I’ve designed a production‑ready Playwright TypeScript test automation framework that blends industry best practices with the power of Generative AI.
+This framework is more than just a testing solution—it’s a learning resource for QA professionals who want to explore how GenAI can accelerate automation, improve adaptability, and enhance test design.
+👉 Using SauceDemo as a placeholder application, the framework demonstrates how to automate web application testing seamlessly. The best part? It’s fully adaptable—you can extend it to any web application of your choice.
+My goal is to help the QA community learn, adopt, and innovate with GenAI in their automation journey.
 
 ---
 
@@ -1445,18 +1448,68 @@ cat test-results/junit.xml
 
 ---
 
-## Support & Documentation
+## Phase 3: Running and Validating the Framework
 
-This framework demonstrates:
-- ✅ Page Object Model pattern for maintainability
-- ✅ TypeScript for type safety and better code quality
-- ✅ Playwright best practices for performance
-- ✅ Test isolation and proper fixtures
-- ✅ CI/CD automation with GitHub Actions
-- ✅ Comprehensive reporting and logging
-- ✅ Real-world SauceDemo application testing
+Once the framework files are generated and dependencies are installed, follow these steps to run the tests on your machine:
+
+### Step 3.1: Install Dependencies
+
+```bash
+npm install
+```
+
+### Step 3.2: Install Playwright Browsers
+
+```bash
+npx playwright install
+```
+
+### Step 3.3: Run the Tests
+
+**Run all tests:**
+```bash
+npm run test:all
+```
+
+**Run tests in headed mode (visible browser):**
+```bash
+npm run test:headed
+```
+
+**Run tests with Playwright UI mode:**
+```bash
+npm run test:ui
+```
+
+**Run specific test file:**
+```bash
+npx playwright test src/tests/login.spec.ts
+```
+
+### Step 3.4: View Test Reports
+
+After running tests, view the HTML report:
+```bash
+npm run test:report
+```
+
+This will open the interactive Playwright report in your browser showing test results, screenshots, and videos.
+
+### Step 3.5: Verify Everything Works
+
+- Tests should pass for the SauceDemo application
+- Reports should generate successfully
+- Screenshots should be captured on failures
+- CI/CD pipeline should work when pushed to GitHub
+
+**Expected Output:**
+- All tests pass (green checkmarks)
+- HTML report opens with detailed results
+- No installation or runtime errors
 
 ---
+
+**Framework is now ready to use!** You can modify the tests, add new page objects, or adapt it for other web applications.
 
 ## Next Steps
 
