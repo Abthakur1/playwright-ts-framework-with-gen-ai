@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/loginPage';
 import { InventoryPage } from '../pages/inventoryPage';
 import { CheckoutPage } from '../pages/checkoutPage';
+import { defaultShippingInfo, products } from '../config/testData';
 
 test.describe('Checkout Tests', () => {
   let loginPage: LoginPage;
@@ -29,7 +30,7 @@ test.describe('Checkout Tests', () => {
     expect(isUserLoggedIn).toBeTruthy();
 
     // When: User selects a product and adds it to cart
-    const productName = 'Sauce Labs Backpack';
+    const productName = products.backpack; // Using product name from test data
     await inventoryPage.addProductToCart(productName);
 
     // Verify item was added to cart
@@ -47,7 +48,7 @@ test.describe('Checkout Tests', () => {
 
     // And: User fills in shipping information
     checkoutPage = new CheckoutPage(page);
-    await checkoutPage.fillShippingInfo('John', 'Doe', '12345');
+    await checkoutPage.fillShippingInfo(defaultShippingInfo.firstName, defaultShippingInfo.lastName, defaultShippingInfo.zipCode);
 
     // And: User confirms order
     await checkoutPage.clickContinue();
