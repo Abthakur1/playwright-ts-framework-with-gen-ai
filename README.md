@@ -1,141 +1,156 @@
-# Playwright TypeScript Test Automation Framework
+# Playwright TypeScript UI + API Automation Framework
 
-A professional, production-ready test automation framework built with Playwright and TypeScript for testing the SauceDemo web application.
+Production-ready Playwright + TypeScript framework that supports:
+- UI automation for SauceDemo using Page Object Model.
+- API automation for ReqRes endpoints with shared client utilities.
 
-## Features
+## Highlights
 
-- **Page Object Model (POM)**: Well-structured page objects for maintainable code
-- **TypeScript**: Full type safety and modern JavaScript features
-- **Custom Fixtures**: Reusable test fixtures for common setup
-- **Configuration Management**: Environment-based configuration
-- **Logging**: Custom logging utility for test execution tracking
-- **Helper Utilities**: Common helper functions for test automation
-- **CI/CD Ready**: GitHub Actions workflow for automated testing
-- **Cross-browser Testing**: Support for Chromium, Firefox, and WebKit
-- **Parallel Execution**: Run tests in parallel for faster execution
+- Unified test framework for both UI and API test layers.
+- Page Object Model for scalable and maintainable UI tests.
+- Reusable API client abstraction with default headers.
+- Test fixtures, config, utilities, and test data separation.
+- Multi-project Playwright setup (UI browsers + API project).
+- HTML reporting and CI workflow support.
 
 ## Prerequisites
 
-- Node.js 18.x or higher
-- npm 9.x or higher
+- Node.js 18+
+- npm 9+
 
-## Installation
+## Setup
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd playwright-ts-framework
-```
+1. Install dependencies:
 
-2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Install Playwright browsers:
+2. Install Playwright browsers:
+
 ```bash
 npx playwright install
 ```
 
-## Configuration
+3. Optional environment setup:
 
-1. Copy the environment file:
 ```bash
-cp .env.example .env
+copy .env.example .env
 ```
 
-2. Update the `.env` file with your test configuration if needed.
+## Run Tests
 
-## Running Tests
+Run all tests:
 
-### Run all tests
 ```bash
 npm test
 ```
 
-### Run tests in headed mode (visible browser)
+Run API tests only:
+
+```bash
+npm run test:api
+```
+
+Run UI tests (Chromium project):
+
+```bash
+npm run test:ui:chromium
+```
+
+Run UI tests (Firefox project):
+
+```bash
+npm run test:ui:firefox
+```
+
+Run UI tests in headed mode:
+
 ```bash
 npm run test:headed
 ```
 
-### Run tests with Playwright UI mode
-```bash
-npm run test:ui
-```
+Run tests in debug mode:
 
-### Run tests in debug mode
 ```bash
 npm run test:debug
 ```
 
-### Run specific test file
+Open the Playwright HTML report:
+
 ```bash
-npx playwright test src/tests/login.spec.ts
+npm run report
 ```
 
-### Run tests with specific browser
-```bash
-npx playwright test --project=chromium
-```
-
-## Project Structure
+## Framework Structure
 
 ```
-playwright-ts-framework/
+playwright-ts-framework-with-genAI/
 ├── .github/
 │   └── workflows/
-│       └── playwright.yml          # CI/CD pipeline
+│       └── playwright.yml
+├── reports/
+├── screenshots/
+├── playwright-report/
+├── test-results/
 ├── src/
-│   ├── tests/
-│   │   ├── login.spec.ts           # Login test scenarios
-│   │   └── checkout.spec.ts        # Checkout test scenarios
-│   ├── pages/
-│   │   ├── basePage.ts             # Base page object with common methods
-│   │   ├── loginPage.ts            # Login page object
-│   │   ├── inventoryPage.ts        # Inventory/products page object
-│   │   └── checkoutPage.ts         # Checkout page object
+│   ├── api/
+│   │   ├── clientAPI.ts               # Base API client (GET/POST/PUT/DELETE + default headers)
+│   │   └── usersAPI.ts                # ReqRes users/auth API methods
+│   ├── config/
+│   │   ├── testConfig.ts              # Runtime/test environment configuration
+│   │   └── testData.ts                # Reusable test data
 │   ├── fixtures/
-│   │   └── testFixtures.ts         # Custom Playwright fixtures
-│   ├── utils/
-│   │   ├── logger.ts               # Custom logging utility
-│   │   └── helpers.ts              # Helper utility functions
-│   └── config/
-│       ├── testConfig.ts           # Test configuration management
-│       └── testData.ts             # Test data definitions
-├── .env.example                    # Environment variables template
-├── .env                            # Environment variables (gitignored)
-├── .gitignore                      # Git ignore rules
-├── playwright.config.ts            # Playwright configuration
-├── package.json                    # Project dependencies and scripts
-├── tsconfig.json                   # TypeScript configuration
-└── README.md                       # This file
+│   │   └── testFixtures.ts            # Shared Playwright fixtures
+│   ├── pages/
+│   │   ├── basePage.ts                # Base page actions
+│   │   ├── loginPage.ts               # Login page object
+│   │   ├── inventoryPage.ts           # Inventory page object
+│   │   └── checkoutPage.ts            # Checkout page object
+│   ├── tests/
+│   │   ├── api/
+│   │   │   ├── reqresApiPositive.spec.ts
+│   │   │   └── reqresApiNegative.spec.ts
+│   │   └── ui/
+│   │       ├── login.spec.ts
+│   │       └── checkout.spec.ts
+│   └── utils/
+│       ├── helpers.ts                 # Common utility methods
+│       └── logger.ts                  # Logging utility
+├── playwright.config.ts               # Playwright projects/configuration
+├── package.json                       # NPM scripts and dependencies
+├── tsconfig.json                      # TypeScript compiler settings
+├── playwright-blueprint.prompt.md
+├── ui-api-automation-framework.prompt.md
+└── README.md
 ```
 
-## Test Scenarios
+## Playwright Projects
 
-### Login Tests (login.spec.ts)
-- **TC-001**: Successful login with valid credentials
-- **TC-002**: Login failure with invalid credentials
-- **TC-003**: Login failure with empty credentials
+Configured projects in playwright.config.ts:
+- chromium: default browser test project.
+- api: API-only tests from src/tests/api.
+- uichromium: UI tests from src/tests/ui on Desktop Chrome.
+- ui-firefox: UI tests from src/tests/ui on Desktop Firefox.
 
-### Checkout Tests (checkout.spec.ts)
-- **TC-004**: Complete successful order
+## NPM Scripts
 
-## Configuration
+- npm test
+- npm run test:api
+- npm run test:ui:chromium
+- npm run test:ui:firefox
+- npm run test:headed
+- npm run test:debug
+- npm run report
+- npm run lint
+- npm run lint:fix
+- npm run type-check
 
-The framework supports multiple environments (local, staging, production) through the `testConfig.ts` file. Environment-specific settings can be configured using environment variables.
+## Notes
 
-## Logging
-
-The framework includes a custom logger that provides structured logging for test execution. Logs include timestamps, test names, and log levels.
-
-## Contributing
-
-1. Follow the existing code structure and naming conventions
-2. Add appropriate TypeScript types
-3. Include JSDoc comments for new methods
-4. Add tests for new functionality
-5. Update documentation as needed
+- UI base URL is configured in playwright.config.ts.
+- API tests use ReqRes endpoints via src/api/clientAPI.ts and src/api/usersAPI.ts.
+- Default API headers (including x-api-key) are centralized in clientAPI.ts.
 
 ## License
 

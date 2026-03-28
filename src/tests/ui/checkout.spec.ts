@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/loginPage';
-import { InventoryPage } from '../pages/inventoryPage';
-import { CheckoutPage } from '../pages/checkoutPage';
-import { defaultShippingInfo, products } from '../config/testData';
+import { LoginPage } from  '../../pages/loginPage';
+import { InventoryPage } from '../../pages/inventoryPage';
+import { CheckoutPage } from '../../pages/checkoutPage';
+import { defaultShippingInfo, products } from '../../config/testData';
 
 test.describe('Checkout Tests', () => {
   let loginPage: LoginPage;
