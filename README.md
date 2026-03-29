@@ -146,6 +146,34 @@ Configured projects in playwright.config.ts:
 - npm run lint:fix
 - npm run type-check
 
+## CI Pipeline
+
+GitHub Actions workflow: `.github/workflows/playwright.yml`
+
+- Installs dependencies and Playwright browsers.
+- Injects `REQRES_API_KEY` from GitHub Secrets into `.env` at runtime.
+- Runs UI and API tests as separate commands.
+- Uses `if: ${{ always() }}` on UI and API steps so API can still run even if UI fails.
+- Writes reports to separate directories:
+	- `playwright-report/ui`
+	- `playwright-report/api`
+- Uploads separate artifacts:
+	- `playwright-ui-tests-report`
+	- `playwright-api-tests-report`
+
+Required GitHub secret:
+
+- `REQRES_API_KEY`
+
+## Prompt Library
+
+This repository includes prompt library documents to reproduce and evolve the framework:
+
+- `playwright-blueprint.prompt.md`
+- `ui-api-automation-framework.prompt.md`
+
+`ui-api-automation-framework.prompt.md` is kept aligned with the current repository implementation, including latest test paths and CI pipeline behavior.
+
 ## Notes
 
 - UI base URL is configured in playwright.config.ts.
