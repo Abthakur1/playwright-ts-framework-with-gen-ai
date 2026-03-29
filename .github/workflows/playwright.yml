@@ -26,6 +26,13 @@ jobs:
         PLAYWRIGHT_HTML_OUTPUT_DIR: playwright-report/ui
       run: npm run test:ui:chromium
 
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: playwright-ui-tests-report
+        path: playwright-report/
+        retention-days: 10
+
     - name: Run Playwright api tests
       if: ${{ always() }}
       env:
@@ -35,6 +42,6 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
-        name: playwright-report
+        name: playwright-api-tests-report
         path: playwright-report/
         retention-days: 10

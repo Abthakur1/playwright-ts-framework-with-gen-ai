@@ -19,8 +19,8 @@ test.describe('Login Tests', () => {
     expect(isLoginButtonVisible).toBeTruthy();
 
     // When: User enters valid username and password and clicks login
-    const username = process.env.VALID_USERNAME || '';
-    const password = process.env.VALID_PASSWORD || '';
+    const username = process.env.VALID_USERNAME || 'standard_user';
+    const password = process.env.VALID_PASSWORD || 'secret_sauce';
     await loginPage.login(username, password);
 
     // Then: User should be redirected to inventory page
