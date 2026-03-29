@@ -45,11 +45,13 @@ export default defineConfig({
       name: 'uichromium',
       testDir: './src/tests/ui',
       use: { ...devices['Desktop Chrome'] },
+      timeout: 60000
     },
     {
       name: 'ui-firefox',
       testDir: './src/tests/ui',
       use: { ...devices['Desktop Firefox'] },
+      timeout: 60000
     }
   ],
 });

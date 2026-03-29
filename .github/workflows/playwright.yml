@@ -21,9 +21,11 @@ jobs:
       run: |
           echo "REQRES_API_KEY=${{ secrets.REQRES_API_KEY }}" >> .env
     - name: Run Playwright ui tests on Chromium
+      if: ${{ always() }}
       run: npm run test:ui:chromium
 
     - name: Run Playwright api tests
+      if: ${{ always() }}
       run: npm run test:api
 
     - uses: actions/upload-artifact@v4
