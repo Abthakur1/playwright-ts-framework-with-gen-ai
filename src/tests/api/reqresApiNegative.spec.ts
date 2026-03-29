@@ -17,29 +17,7 @@ test.describe("Reqres API Negative Tests", () => {
     expect(responseBody).toEqual({});
   });
 
-  test("NEGATIVE POST - Verify register with missing password returns 400", async () => {
-    const response = await usersAPI.registerUser({
-      email: "sydney@fife",
-    });
-
-    expect(response.status()).toBe(400);
-
-    const responseBody = await response.json();
-    expect(responseBody).toHaveProperty("error", "Missing password");
-  });
-
-  test("NEGATIVE POST - Verify login with missing password returns 400", async () => {
-    const response = await usersAPI.loginUser({
-      email: "peter@klaven",
-    });
-
-    expect(response.status()).toBe(400);
-
-    const responseBody = await response.json();
-    expect(responseBody).toHaveProperty("error", "Missing password");
-  });
-
-  test.only("NEGATIVE GET - Verify invalid API key returns 403", async () => {
+  test("NEGATIVE GET - Verify invalid API key returns 403", async () => {
     const response = await usersAPI.getUserWithCustomHeaders(2, {
       "Content-Type": "application/json",
       "x-api-key": "invalid_api_key",

@@ -1,4 +1,5 @@
 import { APIRequestContext, APIResponse } from "@playwright/test";
+import 'dotenv/config';
 
 export class ClientAPI {
   protected request: APIRequestContext;
@@ -6,7 +7,7 @@ export class ClientAPI {
 
   constructor(request: APIRequestContext) {
     this.request = request;
-    this.baseURL = "https://reqres.in";
+    this.baseURL = process.env.REQRES_BASE_URL || '';
   }
 
   /**
@@ -65,10 +66,11 @@ export class ClientAPI {
    * Get default headers with API key and content type
    * @returns Default headers object
    */
-  protected getDefaultHeaders(): Record<string, string> {
+  protected  getDefaultHeaders(): Record<string, string> {
+    console.log('Using API Key:', process.env.REQRES_API_KEY);
     return {
       'Content-Type': 'application/json',
-      'x-api-key': ''
+      'x-api-key': process.env.REQRES_API_KEY || ''
     };
   }
 }

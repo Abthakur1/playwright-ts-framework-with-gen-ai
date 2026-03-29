@@ -30,7 +30,7 @@ export class UsersAPI extends ClientAPI {
     return this.delete(`/api/users/${userId}`);
   }
 
-  async getUserWithCustomHeaders(userId: number, headers: Record<string, string>): Promise<APIResponse> {
-    return this.get(`/api/users/${userId}`, headers);
+  async getUserWithCustomHeaders(userId: number, customHeaders: Record<string, string>): Promise<APIResponse> {
+    return this.get(`/api/users/${userId}`, customHeaders);
   }
 }

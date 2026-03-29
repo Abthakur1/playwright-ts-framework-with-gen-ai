@@ -18,7 +18,7 @@ test.describe("Reqres API Users CRUD workflow (GET/POST/PUT/DELETE)", () => {
   });
 
   test("GET - Verify existing user by ID returns 200 and user schema properties exist", async () => {
-    const id: number = 2;
+    const id: number = 1;
     const response = await usersAPI.getUser(id);
     expect(response.status()).toBe(200);
     const responseBody = await response.json();

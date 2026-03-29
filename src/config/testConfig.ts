@@ -2,6 +2,7 @@
  * Test Configuration
  * Centralized configuration for test environment
  */
+import 'dotenv/config';
 
 export interface TestConfig {
   baseURL: string;
@@ -19,23 +20,23 @@ export function getTestConfig(): TestConfig {
 
   const config: { [key: string]: TestConfig } = {
     local: {
-      baseURL: 'https://www.saucedemo.com',
-      username: process.env.VALID_USERNAME || 'standard_user',
-      password: process.env.VALID_PASSWORD || 'secret_sauce',
+      baseURL: process.env.BASE_URL || '',
+      username: process.env.VALID_USERNAME || '',
+      password: process.env.VALID_PASSWORD || '',
       timeout: 30000,
       retries: 0,
     },
     staging: {
-      baseURL: process.env.BASE_URL || 'https://staging.saucedemo.com',
-      username: process.env.VALID_USERNAME || 'standard_user',
-      password: process.env.VALID_PASSWORD || 'secret_sauce',
+      baseURL: process.env.BASE_URL || '',
+      username: process.env.VALID_USERNAME || '',
+      password: process.env.VALID_PASSWORD || '',
       timeout: 30000,
       retries: 1,
     },
     production: {
-      baseURL: process.env.BASE_URL || 'https://www.saucedemo.com',
-      username: process.env.VALID_USERNAME || 'standard_user',
-      password: process.env.VALID_PASSWORD || 'secret_sauce',
+      baseURL: process.env.BASE_URL || '',
+      username: process.env.VALID_USERNAME || '',
+      password: process.env.VALID_PASSWORD || '',
       timeout: 30000,
       retries: 1,
     },

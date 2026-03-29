@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/loginPage';
 import { InventoryPage } from '../../pages/inventoryPage';
+import 'dotenv/config';
 
 test.describe('Login Tests', () => {
   let loginPage: LoginPage;
@@ -18,8 +19,8 @@ test.describe('Login Tests', () => {
     expect(isLoginButtonVisible).toBeTruthy();
 
     // When: User enters valid username and password and clicks login
-    const username = process.env.VALID_USERNAME || 'standard_user';
-    const password = process.env.VALID_PASSWORD || 'secret_sauce';
+    const username = process.env.VALID_USERNAME || '';
+    const password = process.env.VALID_PASSWORD || '';
     await loginPage.login(username, password);
 
     // Then: User should be redirected to inventory page
