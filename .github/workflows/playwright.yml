@@ -17,6 +17,9 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Use secrets in environment
+      run: |
+          echo "REQRES_API_KEY=${{ secrets.REQRES_API_KEY }}" >> .env
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v4

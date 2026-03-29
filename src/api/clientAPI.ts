@@ -7,7 +7,7 @@ export class ClientAPI {
 
   constructor(request: APIRequestContext) {
     this.request = request;
-    this.baseURL = process.env.REQRES_BASE_URL || '';
+    this.baseURL = process.env.REQRES_BASE_URL || 'https://reqres.in';
   }
 
   /**
